@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Generator - Sakinah Kitchen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #fef3c7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border: 8px solid #7f1d1d;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+        .logo {
+            font-size: 120px;
+            font-weight: 900;
+            color: #7f1d1d;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        .tagline {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 3px 3px 0px #7f1d1d;
+            margin-bottom: 40px;
+            z-index: 1;
+            text-align: center;
+        }
+        .description {
+            font-size: 32px;
+            color: #7f1d1d;
+            font-weight: 600;
+            text-align: center;
+            z-index: 1;
+            background: rgba(255,255,255,0.9);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 4px solid #7f1d1d;
+        }
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: #fef3c7;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+        }
+        .instructions h3 {
+            color: #7f1d1d;
+            margin-bottom: 10px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+            color: #78350f;
+        }
+        .instructions li {
+            margin-bottom: 8px;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #7f1d1d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #991b1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="og-image" id="ogImage">
+            <div class="logo">SAKINAH</div>
+            <div class="tagline">ANEKA JAJANAN KEKINIAN</div>
+            <div class="description">Cireng • Cimol • Mochi • Rice Bowl<br>Semuanya Enak, Semuanya Murah!</div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📸 Cara Membuat OG Image:</h3>
+            <ol>
+                <li>Klik kanan pada gambar di atas</li>
+                <li>Pilih "Inspect" atau tekan F12</li>
+                <li>Pilih elemen dengan id "ogImage"</li>
+                <li>Klik kanan → "Capture node screenshot" (Chrome) atau gunakan extension screenshot</li>
+                <li>Simpan sebagai <code>og-image.png</code> di folder <code>public/</code></li>
+                <li>Atau gunakan tool online seperti <a href="https://www.canva.com" target="_blank">Canva</a> dengan ukuran 1200x630px</li>
+            </ol>
+        </div>
+        
+        <button class="download-btn" onclick="downloadImage()">💾 Download sebagai PNG (jika browser support)</button>
+    </div>
+
+    <script>
+        function downloadImage() {
+            const element = document.getElementById('ogImage');
+            html2canvas(element, {
+                width: 1200,
+                height: 630,
+                scale: 1
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'og-image.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                alert('Browser tidak support. Silakan gunakan cara manual di atas atau gunakan tool online seperti Canva dengan ukuran 1200x630px');
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
+

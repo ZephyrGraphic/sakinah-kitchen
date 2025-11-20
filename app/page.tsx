@@ -235,6 +235,7 @@ export default function SakinahKitchenApp() {
           onCategoryChange={setSelectedCategory}
           onAddToCart={addToCart}
           onOpenAI={() => setIsAIModalOpen(true)}
+          onAdminLogin={() => setView("admin-login")}
           isAIModalOpen={isAIModalOpen}
           onCloseAI={() => setIsAIModalOpen(false)}
           aiMoodInput={aiMoodInput}

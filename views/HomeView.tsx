@@ -12,6 +12,7 @@ interface HomeViewProps {
   onCategoryChange: (category: string) => void;
   onAddToCart: (product: Product) => void;
   onOpenAI: () => void;
+  onAdminLogin: () => void;
   // AI Modal props
   isAIModalOpen: boolean;
   onCloseAI: () => void;
@@ -29,6 +30,7 @@ export default function HomeView({
   onCategoryChange,
   onAddToCart,
   onOpenAI,
+  onAdminLogin,
   isAIModalOpen,
   onCloseAI,
   aiMoodInput,
@@ -113,7 +115,12 @@ export default function HomeView({
       )}
 
       <div className="mt-12 text-center pb-8">
-        {/* Admin login button can be added here if needed */}
+        <button
+          onClick={onAdminLogin}
+          className="text-[10px] text-amber-600 hover:underline font-medium"
+        >
+          Admin Login
+        </button>
       </div>
 
       <AIModal
